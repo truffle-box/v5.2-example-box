@@ -9,33 +9,33 @@ import "./ConvertLib.sol";
 // token, see: https://github.com/ConsenSys/Tokens. Cheers!
 
 contract MetaCoin {
-	event CoinsMinted(address indexed _address, uint256 _value);
-	event Transfer(address indexed _from, address indexed _to, uint256 _value);
-	mapping (address => uint) balances;
+  event CoinsMinted(address indexed _address, uint256 _value);
+  event Transfer(address indexed _from, address indexed _to, uint256 _value);
+  mapping (address => uint) balances;
 
   constructor() public {
     balances[tx.origin] = 10000;
   }
 
-	function mintCoins(address receiver, uint amount) public returns (bool sufficient) {
-		balances[receiver] += amount;
-		emit CoinsMinted(receiver, amount);
-		return true;
-	}
+  function mintCoins(address receiver, uint amount) public returns (bool sufficient) {
+    balances[receiver] += amount;
+    emit CoinsMinted(receiver, amount);
+    return true;
+  }
 
-	function transferCoins(address sender, address receiver, uint amount) public returns (bool sufficient) {
-		if (balances[sender] < amount) return false;
-		balances[sender] -= amount;
-		balances[receiver] += amount;
-		emit Transfer(msg.sender, receiver, amount);
-		return true;
-	}
-
-	function getBalanceInEth(address addr) public view returns (uint) {
-		return ConvertLib.convert(getBalance(addr),2);
-	}
-
-	function getBalance(address addr) public view returns (uint) {
-		return balances[addr];
-	}
+  function transferCoins(address sender, address receiver, uint amount) public returns (bool sufficient) {
+   	if (balances[sender] < amount) return false;
+    balances[sender] -= amount;
+    balances[receiver] += amount;
+    emit Transfer(msg.sender, receiver, amount);
+    return true;
+  }
+  
+  function getBalanceInEth(address addr) public view returns (uint) {
+    return ConvertLib.convert(getBalance(addr),2);
+  }
+  
+  function getBalance(address addr) public view returns (uint) {
+    return balances[addr];
+  }
 }
