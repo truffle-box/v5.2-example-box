@@ -2,20 +2,17 @@ pragma solidity >=0.4.25 <0.7.0;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
-import "truffle/Console.sol";
 import "../contracts/MetaCoin.sol";
+
+// Console.sol can be imported to handle logging in the test environment
+import "truffle/Console.sol";
 
 contract TestMetaCoin {
   function testInitialBalanceUsingDeployedContract() public {
+    // the log method can be used to print string literals
+    Console.log("testing the initial balance");
+
     MetaCoin meta = MetaCoin(DeployedAddresses.MetaCoin());
-
-    uint expected = 10000;
-
-    Assert.equal(meta.getBalance(tx.origin), expected, "Owner should have 10000 MetaCoin initially");
-  }
-
-  function testInitialBalanceWithNewMetaCoin() public {
-    MetaCoin meta = new MetaCoin();
 
     uint expected = 10000;
 
@@ -27,6 +24,7 @@ contract TestMetaCoin {
 
     address receiversAddress = address(0x1234567890123456789012345678901234567890);
 
+    // the log method also accepts a label with a variable
     Console.log("mint 500 coins at ", receiversAddress);
   
     meta.mintCoins(receiversAddress, 500);
