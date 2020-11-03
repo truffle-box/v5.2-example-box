@@ -3,6 +3,12 @@ const mnemonic = "add your mnemonic here";
 const providerURL = "add your provider url here";
 
 module.exports = {
+  compilers: {
+    solc: {
+      version: "pragma"
+    }
+  },
+
   networks: {
     // to use ethPM v3 you need to have a configuration to connect to Ropsten
     ropsten: {
@@ -25,6 +31,7 @@ module.exports = {
     },
     version: "3"
   },
+
   // ens must be enabled for ethPM v3
   ens: {
     enabled: true
