@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.7.0;
 
-import "./Conversion.sol";
+import "./IConversion.abi.json";
 
 // This is just a simple example of a coin-like contract.
 // It is not standards compatible and cannot be expected to talk to other
@@ -12,10 +12,10 @@ contract MetaCoin {
   event CoinsMinted(address indexed _address, uint256 _value);
   event Transfer(address indexed _from, address indexed _to, uint256 _value);
   mapping (address => uint) balances;
-  Conversion conversionContract;
+  IConversion conversionContract;
 
-  constructor(address conversionContractAddress) public {
-    conversionContract = Conversion(conversionContractAddress);
+  constructor(address conversionContractAddress) {
+    conversionContract = IConversion(conversionContractAddress);
     balances[tx.origin] = 10000;
   }
 

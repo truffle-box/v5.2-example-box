@@ -1,0 +1,27 @@
+{
+  "name": "v5.2-example-box",
+  "version": "1.0.0",
+  "description": "README for v5.2-example-box",
+  "main": "truffle-config.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^1.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/truffle-box/v5.2-example-box.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/truffle-box/v5.2-example-box/issues"
+  },
+  "homepage": "https://github.com/truffle-box/v5.2-example-box#readme"
+}
