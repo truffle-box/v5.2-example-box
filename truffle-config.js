@@ -1,11 +1,12 @@
 const HDWalletProvider = require("@truffle/hdwallet-provider");
 const mnemonic = "add your mnemonic here";
-const providerURL = "add your provider url here";
+const providerOrUrl = "add your provider url here";
 
 module.exports = {
   compilers: {
     solc: {
-      version: "pragma"
+      version: "0.7.6",
+      // version: "pragma"
     }
   },
 
@@ -26,7 +27,7 @@ module.exports = {
     ipfsProtocol: "https",
     ipfsPort: "5001",
     registry: {
-      address: "libraries.ethpm.eth",
+      address: "0x0bd0200357D26A0bB5d1D1c1Fd56C317B68d15d5",
       network: "ropsten",
     },
     version: "3"
