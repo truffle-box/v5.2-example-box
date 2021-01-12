@@ -1,4 +1,5 @@
-pragma solidity >=0.4.25 <0.7.0;
+// SPDX-License-Identifier: MIT
+pragma solidity >=0.4.25 <0.8.0;
 
 import "truffle/Assert.sol";
 import "truffle/DeployedAddresses.sol";
@@ -10,7 +11,7 @@ import "truffle/Console.sol";
 contract TestMetaCoin {
   function testInitialBalanceUsingDeployedContract() public {
     // the log method can be used to print string literals
-    Console.log("testing the initial balance");
+    Console.log("testing initial balance of the deployed contract");
 
     MetaCoin meta = MetaCoin(DeployedAddresses.MetaCoin());
 
@@ -20,7 +21,7 @@ contract TestMetaCoin {
   }
 
   function testMintingCoins() public {
-    MetaCoin meta = new MetaCoin();
+    MetaCoin meta = MetaCoin(DeployedAddresses.MetaCoin());
 
     address receiversAddress = address(0x1234567890123456789012345678901234567890);
 
@@ -31,26 +32,26 @@ contract TestMetaCoin {
 
     uint expected = 500;
 
-    Assert.equal(meta.getBalance(receiversAddress), expected, "Receiver should have 500 coins");
+    Assert.equal(meta.getBalance(receiversAddress), expected, "the receiver should have 500 coins");
   }
 
   function testTransferringCoins() public {
-    MetaCoin meta = new MetaCoin();
+    MetaCoin meta = MetaCoin(DeployedAddresses.MetaCoin());
 
     address sendersAddress = address(0x0987654321098765432109876543210987654321);
 
     meta.mintCoins(sendersAddress, 500);
-
-    Console.log("mint 500 coins at ", sendersAddress);
+    Console.log("the sender's balance is", meta.getBalance(sendersAddress));
+    Console.log("mint 500 coins at", sendersAddress);
 
     address receiversAddress = address(0x1987654321198765432119876543211987654321);
 
-    Console.log("transfer 250 coins to ", receiversAddress);
+    Console.log("5 ether worth of coins to", receiversAddress);
   
-    meta.transferCoins(sendersAddress, receiversAddress, 250);
+    meta.transferCoins(sendersAddress, receiversAddress, 5);
 
-    uint expected = 250;
+    uint expected = 20;
 
-    Assert.equal(meta.getBalance(receiversAddress), expected, "Receiver should have 250 coins");
+    Assert.equal(meta.getBalance(receiversAddress), expected, "the receiver should have 20 coins");
   }
 }
