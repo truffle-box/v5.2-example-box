@@ -35,8 +35,6 @@ contract TestMetaCoin {
 
     address receiversAddress = address(0x1987654321198765432119876543211987654321);
 
-    Console.log("5 ether worth of coins to", receiversAddress);
-
     meta.transferCoins(sendersAddress, receiversAddress, 5);
 
     uint expected = 20;
