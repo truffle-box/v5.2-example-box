@@ -3,12 +3,7 @@
   "version": "1.0.0",
   "description": "README for v5.2-example-box",
   "main": "truffle-config.js",
-  "directories": {
-    "test": "test"
-  },
-  "dependencies": {
-    "@truffle/hdwallet-provider": "^1.2.0"
-  },
+  "dependencies": {},
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
